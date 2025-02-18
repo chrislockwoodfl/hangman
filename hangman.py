@@ -39,13 +39,17 @@ while not game_over:
 
     # If guess is not a letter in the chosen_word, Then reduce 'lives' by 1,
     # unless player has already guessed that letter
-    if guess not in chosen_word and guess not in guesses:
-        lives -= 1
-        print("You guessed", guess + ". That's not in the word.")
-    else:
-        print("You already guessed", guess + ".")
+    if guess not in chosen_word:
+        if guess not in guesses:
+            lives -= 1
+            print("You guessed", guess + ". That's not in the word.")
+        else:
+            print("You already guessed", guess + ".")
 
-    print("You have", lives, "guesses left.")
+    if lives == 1:
+        print("You have 1 guesses left.")
+    else:    
+        print("You have", lives, "guesses left.")
     guesses.append(guess)
 
     #  print the hangman graphic that matches number of lives left
